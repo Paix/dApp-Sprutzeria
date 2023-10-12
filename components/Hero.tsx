@@ -39,17 +39,7 @@ export const Hero = () => {
         lineHeight="shorter"
         mb={5}
       >
-        Open source Dapp template for the{' '}
-        <Text
-          as="a"
-          color="elvenTools.color3.base"
-          href="https://www.elven.tools"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Elven Tools
-        </Text>{' '}
-        and{' '}
+        A new era of NFTs marketplace based on{' '}
         <Text
           as="a"
           color="elvenTools.color2.base"
@@ -67,14 +57,10 @@ export const Hero = () => {
         fontWeight="thin"
         textAlign={{ base: 'center', md: 'left' }}
       >
-        The actual working example is connected to the Elven Tools smart
-        contract deployed on the MultiversX blockchain{' '}
+        Access all your NFTs and check out their attributes and rarities on the MultiversX blockchain{' '}
         <Text as="span" fontWeight="medium">
           {chainType}
         </Text>
-        ! You can play with it. I will redeploy it from time to time to keep the
-        minting active. You can also use the template on the mainnet with a
-        couple of config changes. Check the Elven Tools website for docs.
       </Text>
       <Box
         display="flex"
