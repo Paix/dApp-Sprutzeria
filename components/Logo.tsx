@@ -35,7 +35,7 @@ export const Logo = () => {
           fontWeight="black"
           color="elvenTools.white"
         >
-          Weird Faces
+          💦 Sprutzeria
         </Text>
       </Box>
     </NextLink>
