@@ -49,7 +49,7 @@ export const roadmap = [
     ],
   },
   {
-    title: 'Q1 2022',
+    title: 'Q1 2024',
     points: [
       'More helpful docs and videos',
       'More functionality for logged in user',
