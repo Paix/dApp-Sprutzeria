@@ -19,7 +19,7 @@ export const TeamMember: FC<TeamMemberProps> = ({
   return (
     <Box>
       <Box display="flex" alignItems="center" justifyContent="center">
-        <Image src={imageUrl} alt={name} width={250} height={250} borderRadius="2xl"/>
+        <Image src={imageUrl} alt={name} width={250} height={250}/>
       </Box>
       <Text textAlign="center" mt={5} fontWeight="bold" fontSize="xl">
         {name}
