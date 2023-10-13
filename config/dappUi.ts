@@ -7,9 +7,9 @@ export const dappHostname = process.env.NEXT_PUBLIC_DAPP_HOST;
 
 // HTML metata and og tags, default values for MetaHead.tsx component
 export const defaultMetaTags = {
-  title: 'Elven Tools NFT minter dapp demo - MultiversX blockchain',
+  title: 'Sprutzeria dApp - MultiversX blockchain',
   description:
-    'Open source Dapp template for the Elven Tools and MultiversX blockchain. The actual working example is connected to the Elven Tools smart contract deployed on the MultiversX blockchain devnet!',
+    'A new era of NFTs marketplace based on MultiversX blockchain!',
   image: `${dappHostname}/og-image.png`,
 };
 
@@ -41,7 +41,7 @@ export const faq = [
 // Roadmap section data
 export const roadmap = [
   {
-    title: 'Q1 2023',
+    title: 'Q4 2023',
     points: [
       'MultiversX rebranding and dependecies replacement',
       'Nextjs configuration improvements',
@@ -49,50 +49,28 @@ export const roadmap = [
     ],
   },
   {
-    title: 'Q2 2023',
+    title: 'Q1 2022',
     points: [
       'More helpful docs and videos',
       'More functionality for logged in user',
       'Automated tests',
     ],
   },
-  {
-    title: 'Q3 2023',
-    points: [
-      'Blog feature implementation',
-      'Backend cache (Redis?)',
-      'Image optimization (Cloudinary?)',
-      '...sky is the limit!',
-    ],
-  },
 ];
 
 export const team = [
   {
-    name: 'John Doe',
+    name: 'Il Criptonauta',
     bio: 'Web designer and artist',
-    imageUrl: '/john.svg',
+    imageUrl: '/cripto.jpg',
     socialMediaLinks: [
       'https://www.twitter.com',
-      'https://www.behance.net',
-      'https://www.dribbble.com',
     ],
   },
   {
-    name: 'Mark Doe',
+    name: 'Paix',
     bio: 'Smart Contract programmer',
-    imageUrl: '/mark.svg',
+    imageUrl: '/paix.jpeg',
     socialMediaLinks: ['https://www.twitter.com', 'https://www.github.com'],
-  },
-  {
-    name: 'Jack Doe',
-    bio: 'Community relations and marketing',
-    imageUrl: '/jack.svg',
-    socialMediaLinks: [
-      'https://www.twitter.com',
-      'https://www.discord.com',
-      'https://www.telegram.me',
-      'https://www.medium.com',
-    ],
   },
 ];
