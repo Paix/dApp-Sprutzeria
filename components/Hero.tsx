@@ -10,14 +10,8 @@ export const Hero = () => {
   const { explorerAddress, chainType } = useConfig();
   const { data: collectionSize, isLoading: collectionSizeLoading } =
     useElvenScQuery<number>({
-      funcName: 'getTotalSupply',
+      funcName: 'getApy',
       type: SCQueryType.NUMBER,
-    });
-
-  const { data: totalTokensLeft, isLoading: totalTokensLeftIsLoading } =
-    useElvenScQuery<number>({
-      type: SCQueryType.NUMBER,
-      funcName: 'getTotalTokensLeft',
     });
 
   const { data: collectionTicker, isLoading: collectionTickerLoading } =
@@ -26,8 +20,6 @@ export const Hero = () => {
       type: SCQueryType.STRING,
     });
 
-  const minted =
-    collectionSize && totalTokensLeft ? collectionSize - totalTokensLeft : 0;
 
   return (
     <Box width="100%">
@@ -93,9 +85,9 @@ export const Hero = () => {
           }
         />
         <CollectionInfoBox
-          content={`${minted} / ${collectionSize || 0}`}
+          content={`${collectionSize || 0}`}
           isLoading={collectionSizeLoading || totalTokensLeftIsLoading}
-          label="Minted per collection supply"
+          label="APY"
         />
       </Box>
     </Box>
