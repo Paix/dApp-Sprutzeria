@@ -16,7 +16,7 @@ export const Hero = () => {
 
   const { data: collectionTicker, isLoading: collectionTickerLoading } =
     useElvenScQuery<number>({
-      funcName: 'getNftTokenId',
+      funcName: 'getTokensID',
       type: SCQueryType.STRING,
     });
 
