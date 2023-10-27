@@ -40,7 +40,7 @@ export const theme = extendTheme({
       shadowColor: '#141414',
       dark: {
         lighter: '#3c4757',
-        base: '#222831',
+        base: '#003333',
         darker: '#1d222a',
       },
       light: '#FAFFFD',
