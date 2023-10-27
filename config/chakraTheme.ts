@@ -3,10 +3,6 @@
 import { extendTheme } from '@chakra-ui/react';
 import MarkerFelt from './fonts/MarkerFelt.ttf';
 
-const style = {
-  fontFamily: MarkerFelt,
-};
-
 export const theme = extendTheme({
   styles: {
     global: {
@@ -36,8 +32,8 @@ export const theme = extendTheme({
     },
   },
   fonts: {
-    heading: 'Poppins, MarkerFelt',
-    body: 'Poppins, MarkerFelt',
+    heading: MarkerFelt,
+    body: MarkerFelt,
   },
   colors: {
     elvenTools: {
