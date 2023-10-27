@@ -54,7 +54,7 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
           _hover={{ bg: 'elvenTools.color2.darker' }}
           transition="background-color .3s"
         >
-          Mint
+          Stake
         </Link>
       )}
       {enabled.includes('auth') && <LoginModalButton />}

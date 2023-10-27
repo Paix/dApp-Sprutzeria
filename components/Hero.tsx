@@ -85,7 +85,7 @@ export const Hero = () => {
           }
         />
         <CollectionInfoBox
-          content={`${collectionSize/100"%" || 0"%"}`}
+          content={`${collectionSize/100 || 0}%`}
           isLoading={collectionSizeLoading}
           label="APY"
         />
