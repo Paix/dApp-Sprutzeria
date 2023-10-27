@@ -36,7 +36,7 @@ export const theme = extendTheme({
   },
   colors: {
     elvenTools: {
-      bgStripes: '#2c3440',
+      bgStripes: '#003333',
       shadowColor: '#141414',
       dark: {
         lighter: '#3c4757',
@@ -51,9 +51,9 @@ export const theme = extendTheme({
         darker: '#1c7bda',
       },
       color2: {
-        lighter: '#b0dd49',
-        base: '#A2D729',
-        darker: '#8ab722',
+        lighter: '#ff9966',
+        base: '#ff6633',
+        darker: '#cc6633',
       },
       color3: {
         lighter: '#fb9567',
