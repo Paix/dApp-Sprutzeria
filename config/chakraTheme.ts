@@ -1,11 +1,11 @@
 // Chakra UI specific theme and variables configuration
 
 import { extendTheme } from '@chakra-ui/react';
+import MarkerFelt from './fonts/MarkerFelt.ttf';
 
-@font-face { 
-font-family: 'MarkerFelt';
-src: url('fonts/MarkerFelt.ttf') format('truetype');
-}
+const style = {
+  fontFamily: MarkerFelt,
+};
 
 export const theme = extendTheme({
   styles: {
