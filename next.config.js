@@ -26,7 +26,7 @@ const nextConfig = {
     ];
   },
   eslint: {
-    dirs: ['components', 'config', 'hooks', 'pages', 'store', 'types', 'utils'],
+    dirs: ['components', 'config', 'hooks', 'pages', 'store', 'types', 'utils', 'fonts'],
   },
   images: {
     domains: [

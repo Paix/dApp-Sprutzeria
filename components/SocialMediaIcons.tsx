@@ -6,12 +6,12 @@ export const SocialMediaIcons = () => {
     <Box display="flex" alignItems="center" gap={3}>
       <SocialIcon
         url="https://www.twitter.com/SprutZeria"
-        bgColor="#fff"
+        bgColor="#ff6633"
         style={{ width: 30, height: 30 }}
       />
       <SocialIcon
-        url="https://discord.gg/DP6nNzNw"
-        bgColor="#fff"
+        url="https://discord.gg/gB6UQT3VDn"
+        bgColor="#ff6633"
         style={{ width: 30, height: 30 }}
       />
     </Box>

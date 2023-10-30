@@ -1,7 +1,6 @@
 // Chakra UI specific theme and variables configuration
 
 import { extendTheme } from '@chakra-ui/react';
-import MarkerFelt from '../fonts/MarkerFelt.ttf';
 
 export const theme = extendTheme({
   styles: {
@@ -32,8 +31,8 @@ export const theme = extendTheme({
     },
   },
   fonts: {
-    heading: MarkerFelt,
-    body: MarkerFelt,
+    heading: 'Poppins, sans-serif',
+    body: 'Poppins, sans-serif',
   },
   colors: {
     elvenTools: {

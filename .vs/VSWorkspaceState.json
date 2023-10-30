@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\fonts",
+    "\\public"
   ],
-  "SelectedNode": "\\C:\\Users\\apistolato\\Source\\Repos\\dApp-Sprutzeria",
+  "SelectedNode": "\\tsconfig.json",
   "PreviewInSolutionExplorer": false
 }
