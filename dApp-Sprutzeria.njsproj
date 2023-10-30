@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76c20781-8cba-4576-a5b6-f80a2a6ec27c}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <StartupFile>pages\index.tsx</StartupFile>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <EnableTypeScript>true</EnableTypeScript>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">17.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <None Include="tsconfig.json" />
+    <Content Include="CHANGELOG.md" />
+    <Content Include="public\6tkWxBYu.jpg" />
+    <Content Include="README.md" />
+    <None Include="fonts.d.ts" />
+    <None Include="middleware.ts" />
+    <None Include="next-env.d.ts" />
+    <None Include="components\ActionButton.tsx" />
+    <None Include="components\CollectionInfoBox.tsx" />
+    <None Include="components\Faq.tsx" />
+    <None Include="components\FaqItem.tsx" />
+    <None Include="components\Footer.tsx" />
+    <None Include="components\HeaderMenu.tsx" />
+    <None Include="components\HeaderMenuButtons.tsx" />
+    <None Include="components\Hero.tsx" />
+    <None Include="components\HeroImage.tsx" />
+    <None Include="components\HomeSectionTitle.tsx" />
+    <None Include="components\Logo.tsx" />
+    <None Include="components\MainLayout.tsx" />
+    <None Include="components\MetaHead.tsx" />
+    <None Include="components\MintForm.tsx" />
+    <None Include="components\MintHero.tsx" />
+    <None Include="components\NFTAllowlistEnabled.tsx" />
+    <None Include="components\NftImageHelper.tsx" />
+    <None Include="components\NFTLeftToMint.tsx" />
+    <None Include="components\NFTLeftToMintPerAddress.tsx" />
+    <None Include="components\NFTMintedAlready.tsx" />
+    <None Include="components\ProfileNFTsList.tsx" />
+    <None Include="components\ProfileUserData.tsx" />
+    <None Include="components\Roadmap.tsx" />
+    <None Include="components\RoadmapItem.tsx" />
+    <None Include="components\SocialMediaIcons.tsx" />
+    <None Include="components\Team.tsx" />
+    <None Include="components\TeamMember.tsx" />
+    <None Include="components\UserAvatar.tsx" />
+    <None Include="config\chakraTheme.ts" />
+    <None Include="config\dappCustoms.ts" />
+    <None Include="config\dappUi.ts" />
+    <None Include="hooks\useEffectOnlyOnUpdate.tsx" />
+    <None Include="hooks\useElvenScQuery.tsx" />
+    <None Include="hooks\useMintTransaction.tsx" />
+    <None Include="pages\about.tsx" />
+    <None Include="pages\index.tsx" />
+    <None Include="pages\mint.tsx" />
+    <None Include="pages\profile.tsx" />
+    <None Include="pages\_app.tsx" />
+    <Content Include="public\110.png" />
+    <Content Include="public\og-image.png" />
+    <Content Include="public\cripto.jpg" />
+    <Content Include="public\img.gif" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\jack.svg" />
+    <Content Include="public\john.svg" />
+    <Content Include="public\logo.svg" />
+    <Content Include="public\mark.svg" />
+    <None Include="types\account.ts" />
+    <None Include="types\nfts.ts" />
+    <None Include="utils\errorParse.ts" />
+    <None Include="utils\getSigningDeviceName.ts" />
+    <None Include="utils\isMobile.ts" />
+    <None Include="utils\shortenHash.ts" />
+    <None Include="components\core\Authenticated.tsx" />
+    <None Include="components\core\LedgerAccountsList.tsx" />
+    <None Include="components\core\LoginComponent.tsx" />
+    <None Include="components\core\LoginModalButton.tsx" />
+    <None Include="components\core\ProtectedPageWrapper.tsx" />
+    <None Include="components\core\TransactionPendingModal.tsx" />
+    <None Include="components\core\WalletConnectPairings.tsx" />
+    <None Include="components\core\WalletConnectQRCode.tsx" />
+    <None Include="pages\api\dapp-api-access-denied.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="components" />
+    <Folder Include="components\core" />
+    <Folder Include="config" />
+    <Folder Include="dApp-Sprutzeria" />
+    <Folder Include="fonts" />
+    <Folder Include="hooks" />
+    <Folder Include="pages" />
+    <Folder Include="pages\api" />
+    <Folder Include="public" />
+    <Folder Include="types" />
+    <Folder Include="utils" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

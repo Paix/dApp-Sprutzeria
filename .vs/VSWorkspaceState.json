@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\components",
+    "\\config",
     "\\fonts",
+    "\\pages",
     "\\public"
   ],
-  "SelectedNode": "\\tsconfig.json",
   "PreviewInSolutionExplorer": false
 }

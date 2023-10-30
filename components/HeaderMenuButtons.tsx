@@ -23,7 +23,7 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
     >
       {enabled.includes('about') && (
         <Link
-          color="elvenTools.color2"
+          color="elvenTools.white"
           mr={2}
           as={NextLink}
           _focus={{ outline: 'none' }}

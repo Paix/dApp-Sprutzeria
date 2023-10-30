@@ -1,0 +1,3 @@
+C:\Users\apistolato\Source\Repos\dApp-Sprutzeria\obj\Debug\dApp-Sprutzeria.njsproj.AssemblyReference.cache
+C:\Users\apistolato\Source\Repos\dApp-Sprutzeria\obj\Debug\dApp-Sprutzeria.njsproj.CoreCompileInputs.cache
+C:\Users\apistolato\Source\Repos\dApp-Sprutzeria\bin\Microsoft.NodejsTools.WebRole.dll

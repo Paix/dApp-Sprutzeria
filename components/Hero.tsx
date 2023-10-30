@@ -69,15 +69,15 @@ export const Hero = () => {
           content={collectionTicker || '-'}
           label="Collection ticker. Click for details."
           isLoading={collectionTickerLoading}
-          href={`${explorerAddress}/collections/${collectionTicker}`}
+          href={`${explorerAddress}/tokens/${collectionTicker}`}
         />
         <CollectionInfoBox
           content={
             smartContractAddress
               ? shortenHash(smartContractAddress || '', 12)
-              : 'No minter smart contract provided!'
+              : 'No smart contract provided!'
           }
-          label={`Minter smart contract. Click for details.`}
+          label={`Smart contract. Click for details.`}
           href={
             smartContractAddress
               ? `${explorerAddress}/accounts/${smartContractAddress}`
