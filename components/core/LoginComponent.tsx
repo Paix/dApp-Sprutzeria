@@ -74,6 +74,12 @@ export const LoginComponent = memo(() => {
             <ActionButton isFullWidth onClick={handleLedgerAccountsList}>
               Ledger
             </ActionButton>
+            <ActionButton
+              isFullWidth
+              onClick={handleLogin(LoginMethodsEnum.xalias)}
+            >
+              xAlias
+            </ActionButton>
           </>
         )}
       </Stack>
