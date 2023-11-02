@@ -3,10 +3,8 @@ import { Box, Text } from '@chakra-ui/react';
 import { MainLayout } from '../components/MainLayout';
 import { HeaderMenu } from '../components/HeaderMenu';
 import { HeaderMenuButtons } from '../components/HeaderMenuButtons';
-import { useConfig } from '@useelven/core';
 
 const About: NextPage = () => {
-  const { chainType } = useConfig();
 
   return (
     <MainLayout>
