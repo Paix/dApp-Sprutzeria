@@ -39,14 +39,6 @@
     <None Include="components\Logo.tsx" />
     <None Include="components\MainLayout.tsx" />
     <None Include="components\MetaHead.tsx" />
-    <None Include="components\MintForm.tsx" />
-    <None Include="components\MintHero.tsx" />
-    <None Include="components\NFTAllowlistEnabled.tsx" />
-    <None Include="components\NftImageHelper.tsx" />
-    <None Include="components\NFTLeftToMint.tsx" />
-    <None Include="components\NFTLeftToMintPerAddress.tsx" />
-    <None Include="components\NFTMintedAlready.tsx" />
-    <None Include="components\ProfileNFTsList.tsx" />
     <None Include="components\ProfileUserData.tsx" />
     <None Include="components\Roadmap.tsx" />
     <None Include="components\RoadmapItem.tsx" />
@@ -59,7 +51,6 @@
     <None Include="config\dappUi.ts" />
     <None Include="hooks\useEffectOnlyOnUpdate.tsx" />
     <None Include="hooks\useElvenScQuery.tsx" />
-    <None Include="hooks\useMintTransaction.tsx" />
     <None Include="pages\about.tsx" />
     <None Include="pages\index.tsx" />
     <None Include="pages\staking.tsx" />
@@ -94,7 +85,6 @@
     <Folder Include="components" />
     <Folder Include="components\core" />
     <Folder Include="config" />
-    <Folder Include="dApp-Sprutzeria" />
     <Folder Include="fonts" />
     <Folder Include="hooks" />
     <Folder Include="pages" />
@@ -102,6 +92,10 @@
     <Folder Include="public" />
     <Folder Include="types" />
     <Folder Include="utils" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="components\NftImageHelper.tsx" />
+    <TypeScriptCompile Include="components\ProfileNFTsList.tsx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

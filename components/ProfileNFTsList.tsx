@@ -2,7 +2,6 @@ import { Box, Stack, Spinner, Card, CardBody, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useAccount, useApiCall, SCQueryType, useConfig } from '@useelven/core';
 import { NFT } from '../types/nfts';
-import { useElvenScQuery } from '../hooks/useElvenScQuery';
 import { NftImageHelper } from './NftImageHelper';
 
 const SIZE_PER_PAGE = 10000;
@@ -11,11 +10,7 @@ export const ProfileNFTsList = () => {
   const { address } = useAccount();
   const { explorerAddress } = useConfig();
 
-  const { data: collectionTicker, isLoading: collectionTickerLoading } =
-    useElvenScQuery<number>({
-      funcName: 'getNftTokenId',
-      type: SCQueryType.STRING,
-    });
+  const { data: collectionTicker, isLoading: collectionTickerLoading } = {data: "SPRUTZTEST-762101", isLoading: true}
 
   const { data: nfts, isLoading: nftsDataPending } = useApiCall<NFT[]>({
     url: `/accounts/${address}/nfts?collections=${collectionTicker}&size=${SIZE_PER_PAGE}`,
