@@ -1,6 +1,6 @@
 import { Box, Stack, Spinner, Card, CardBody, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { useAccount, useApiCall, SCQueryType, useConfig } from '@useelven/core';
+import { useAccount, useApiCall, useConfig } from '@useelven/core';
 import { NFT } from '../types/nfts';
 import { NftImageHelper } from './NftImageHelper';
 
