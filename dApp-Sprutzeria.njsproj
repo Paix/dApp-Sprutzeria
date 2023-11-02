@@ -62,7 +62,7 @@
     <None Include="hooks\useMintTransaction.tsx" />
     <None Include="pages\about.tsx" />
     <None Include="pages\index.tsx" />
-    <None Include="pages\mint.tsx" />
+    <None Include="pages\staking.tsx" />
     <None Include="pages\profile.tsx" />
     <None Include="pages\_app.tsx" />
     <Content Include="public\110.png" />

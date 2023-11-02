@@ -37,10 +37,10 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
 
       <UserAvatar />
 
-      {enabled.includes('mint') && (
+      {enabled.includes('staking') && (
         <Link
           as={NextLink}
-          href="/mint"
+          href="/staking"
           borderColor="elvenTools.color2.darker"
           borderWidth={2}
           bgColor="transparent"
