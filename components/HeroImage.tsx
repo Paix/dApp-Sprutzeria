@@ -16,14 +16,14 @@ export const HeroImage = () => {
       <Box
         padding={10}
         bgColor="elvenTools.dark.darker"
-        borderRadius="2xl"
+        borderRadius="xl"
         userSelect="none"
         boxShadow="0 0 25px"
         color="elvenTools.shadowColor"
         display="flex"
         bgGradient="linear-gradient(90deg, elvenTools.dark.base 0%, elvenTools.dark.darker 70%);"
       >
-        <Box as="img" src="/img.gif" alt="" width="300px" height="300px" />
+        <Box as="img" src="/img.gif" alt="" width="300px" height="300px" borderRadius="xl" />
       </Box>
     </Box>
   );

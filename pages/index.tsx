@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <MainLayout>
       <HeaderMenu>
-        <HeaderMenuButtons enabled={['auth', 'mint', 'about']} />
+        <HeaderMenuButtons enabled={['auth', 'staking', 'about']} />
       </HeaderMenu>
       <Box
         display="flex"

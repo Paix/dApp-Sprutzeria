@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
-import Image from 'next/image';
+//import Image from 'next/image';
 import { FC } from 'react';
 import { SocialIcon } from 'react-social-icons';
 
@@ -17,9 +17,8 @@ export const TeamMember: FC<TeamMemberProps> = ({
   bio,
 }) => {
   return (
-    <Box>
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <Image src={imageUrl} alt={name} width={250} height={250}/>
+    <Box justifyContent="center" alignItems="center" width="250px">
+      <Box display="flex" alignItems="center" alignContent="center" justifyContent="center" as="img" src={imageUrl} alt={name} width="250px" height="250px" borderRadius="xl">
       </Box>
       <Text textAlign="center" mt={5} fontWeight="bold" fontSize="xl">
         {name}

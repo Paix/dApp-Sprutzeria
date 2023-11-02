@@ -10,7 +10,8 @@ export const ProfileNFTsList = () => {
   const { address } = useAccount();
   const { explorerAddress } = useConfig();
 
-  const { data: collectionTicker, isLoading: collectionTickerLoading } = {data: "SPRUTZTEST-762101", isLoading: true}
+  const collectionTicker = "SPRUTZTEST-762101";
+  const collectionTickerLoading = false;
 
   const { data: nfts, isLoading: nftsDataPending } = useApiCall<NFT[]>({
     url: `/accounts/${address}/nfts?collections=${collectionTicker}&size=${SIZE_PER_PAGE}`,
@@ -35,7 +36,7 @@ export const ProfileNFTsList = () => {
     return (
       <Box mt={12} textAlign="center">
         <Text>No NFTs minted yet!</Text>
-        <Link href="/mint">
+        <Link href="/staking">
           <Text textDecoration="underline">Mint some!</Text>
         </Link>
       </Box>
