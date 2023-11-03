@@ -9,7 +9,7 @@ export const Team = () => {
   return (
     <Box mt={32}>
       <HomeSectionTitle title="Team" />
-      <SimpleGrid columns={2} spacing={10}>
+      <SimpleGrid columns={{ lg: 2, md: 2, sm: 1 }} spacing={10}>
         {team.map((teamMember, index) => (
           <center key={index}>
             <TeamMember key={index} {...teamMember} />
