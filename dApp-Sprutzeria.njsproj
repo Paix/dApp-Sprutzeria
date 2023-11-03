@@ -22,6 +22,7 @@
     <None Include="tsconfig.json" />
     <Content Include="CHANGELOG.md" />
     <Content Include="public\6tkWxBYu.jpg" />
+    <Content Include="public\logobig.png" />
     <Content Include="README.md" />
     <None Include="fonts.d.ts" />
     <None Include="middleware.ts" />

@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, Image } from '@chakra-ui/react';
 import { useConfig } from '@useelven/core';
 
 export const Logo = () => {
@@ -26,17 +26,7 @@ export const Logo = () => {
         >
           {chainType}
         </Text>
-
-        <Text
-          as="span"
-          cursor="pointer"
-          mb={0}
-          fontSize="4xl"
-          fontWeight="black"
-          color="elvenTools.white"
-        >
-          💦 Sprutzeria
-        </Text>
+        <Image height="60px" width="180px" src="/logobig.png" />
       </Box>
     </NextLink>
   );
