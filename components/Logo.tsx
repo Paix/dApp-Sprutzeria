@@ -26,7 +26,7 @@ export const Logo = () => {
         >
           {chainType}
         </Text>
-        <Image height="60px" width="180px" src="/logobig.png" />
+        <Image alt="Sprutzeria" height="60px" width="180px" src="/logobig.png" />
       </Box>
     </NextLink>
   );
