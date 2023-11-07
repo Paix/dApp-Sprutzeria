@@ -7,7 +7,7 @@ import { SCQueryType, useConfig } from '@useelven/core';
 const smartContractAddress = process.env.NEXT_PUBLIC_NFT_SMART_CONTRACT;
 
 export const Hero = () => {
-  const { explorerAddress, chainType } = useConfig();
+  const { explorerAddress } = useConfig();
   const { data: collectionSize, isLoading: collectionSizeLoading } =
     useElvenScQuery<number>({
       funcName: 'getApy',
@@ -31,7 +31,7 @@ export const Hero = () => {
         lineHeight="shorter"
         mb={5}
       >
-        A new era of NFTs marketplace based on{' '}
+        Inizia a far SprutZare i tuoi SprutZ su rete {' '}
         <Text
           as="a"
           color="elvenTools.color2.base"
@@ -41,7 +41,7 @@ export const Hero = () => {
         >
           MultiversX
         </Text>{' '}
-        blockchain.
+        e ottieni gli SpritZ.
       </Text>
       <Text
         as="h2"
@@ -49,9 +49,9 @@ export const Hero = () => {
         fontWeight="thin"
         textAlign={{ base: 'center', md: 'left' }}
       >
-        Access all your NFTs and check out their attributes and rarities on the MultiversX blockchain{' '}
+        Osserva la tua collezione e inizia a far lavorare i tuoi SpritZ con un boost iniziale del 
         <Text as="span" fontWeight="medium">
-          {chainType}
+          {` ${collectionSize / 100 || 0}%`}
         </Text>
       </Text>
       <Box

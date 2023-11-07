@@ -9,6 +9,12 @@ export interface Login {
   token?: string;
 }
 
+export interface StakingPosition {
+  amount: number;
+  block: number;
+  token: string;
+}
+
 export interface Account {
   address: string;
   balance: string;

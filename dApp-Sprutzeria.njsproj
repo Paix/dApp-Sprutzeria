@@ -13,12 +13,19 @@
     <EnableTypeScript>true</EnableTypeScript>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">17.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <NodejsPort>3000</NodejsPort>
+    <StartWebBrowser>True</StartWebBrowser>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include=".editorconfig" />
+    <Content Include=".env.local" />
+    <Content Include="next.config.js" />
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
+    <Content Include="staking-contract.abi.json" />
     <None Include="tsconfig.json" />
     <Content Include="CHANGELOG.md" />
     <Content Include="public\6tkWxBYu.jpg" />

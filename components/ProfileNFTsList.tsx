@@ -1,5 +1,4 @@
 import { Box, Stack, Spinner, Card, CardBody, Text } from '@chakra-ui/react';
-import Link from 'next/link';
 import { useAccount, useApiCall, useConfig } from '@useelven/core';
 import { NFT } from '../types/nfts';
 import { NftImageHelper } from './NftImageHelper';
@@ -35,10 +34,7 @@ export const ProfileNFTsList = () => {
   if (!nfts || nfts.length === 0) {
     return (
       <Box mt={12} textAlign="center">
-        <Text>No NFTs minted yet!</Text>
-        <Link href="/staking">
-          <Text textDecoration="underline">Mint some!</Text>
-        </Link>
+        <Text>No NFTs yet!</Text>
       </Box>
     );
   }

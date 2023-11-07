@@ -35,7 +35,7 @@ export const TeamMember: FC<TeamMemberProps> = ({
             <SocialIcon
               key={index}
               url={link}
-              bgColor="#fff"
+              bgColor="#ff6633"
               style={{ width: 30, height: 30 }}
             />
           ))}
