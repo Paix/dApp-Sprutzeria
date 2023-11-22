@@ -104,6 +104,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="components\NftImageHelper.tsx" />
     <TypeScriptCompile Include="components\ProfileNFTsList.tsx" />
+    <TypeScriptCompile Include="utils\index.ts" />
+    <TypeScriptCompile Include="utils\sdkDappHelpers.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

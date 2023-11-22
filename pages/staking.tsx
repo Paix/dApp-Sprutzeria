@@ -3,20 +3,31 @@ import { Box, FormLabel, NumberInputField, NumberInput, NumberInputStepper, Numb
 import { MainLayout } from '../components/MainLayout';
 import { HeaderMenu } from '../components/HeaderMenu';
 import { HeaderMenuButtons } from '../components/HeaderMenuButtons';
-import { useState } from 'react';
-import { SCQueryType, useAccount} from '@useelven/core';
+import { useState, useCallback } from 'react';
+import {
+  SCQueryType, useAccount, useApiCall, useTransaction
+} from '@useelven/core';
 import { useElvenScQuery } from '../hooks/useElvenScQuery';
-import { Address } from "@multiversx/sdk-core";
+import { Address, BigUIntValue, ContractCallPayloadBuilder, ContractFunction, BytesValue } from "@multiversx/sdk-core";
+import { Token } from "../types/account";
 import abiJSON from "../staking-contract.abi.json";
+import { ActionButton } from '../components/ActionButton';
+
+const smartContractAddress = process.env.NEXT_PUBLIC_NFT_SMART_CONTRACT ? process.env.NEXT_PUBLIC_NFT_SMART_CONTRACT : "";
 
 const Staking: NextPage = () => {
 
-
-
   const { address } = useAccount();
   const hexAdress = new Address(address);
+  const { data: stakedAddresses } =
+    useElvenScQuery<string>({
+      type: SCQueryType.STRING,
+      funcName: 'getStakedAddresses',
+      abiJSON: abiJSON,
+    });
 
-  const { data: stakingPosition } =
+  console.log(stakedAddresses);
+  const { data: stakingPosition = 0 } =
     useElvenScQuery<number>({
       type: SCQueryType.NUMBER,
       funcName: 'getStakingPosition',
@@ -24,12 +35,61 @@ const Staking: NextPage = () => {
       abiJSON: abiJSON,
     });
 
-  const num = stakingPosition / 1000000000000000000;
+  const { data: tokenId } =
+    useElvenScQuery<string>({
+      funcName: 'getTokensID',
+      type: SCQueryType.STRING,
+    });
 
-  const [valueStake, setValueStake] = useState(0)
-  const [valueUnstake, setValueUnstake] = useState(0)
+  const { data: dataESDT } = useApiCall<Token>({
+    url: `/accounts/${hexAdress}/tokens/${tokenId}`,
+    autoInit: Boolean(hexAdress) && Boolean(tokenId),
+  });
 
+  const realStakingPosition = stakingPosition / 1000000000000000000;
 
+  const [valueStake, setValueStake] = useState(0);
+  const [valueUnstake, setValueUnstake] = useState(0);
+
+  const { pending, triggerTx } = useTransaction();
+
+  const stakeTransaction = useCallback(() => {
+    // Prepare data payload for smart contract using MultiversX JS SDK core tools
+    const data = new ContractCallPayloadBuilder()
+      .setFunction(new ContractFunction('ESDTTransfer'))
+      .setArgs([
+        BytesValue.fromUTF8(tokenId.trim()),
+        new BigUIntValue(valueStake * 1000000000000000000),
+        BytesValue.fromUTF8("stake")
+      ])
+      .build();
+
+    triggerTx({
+      address: smartContractAddress,
+      gasLimit: 5000000,
+      value: 0,
+      data,
+    });
+  }, [valueStake, tokenId, triggerTx]);
+
+  const unstakeTransaction = useCallback(() => {
+    // Prepare data payload for smart contract using MultiversX JS SDK core tools
+    const data = new ContractCallPayloadBuilder()
+      .setFunction(new ContractFunction('ESDTTransfer'))
+      .setArgs([
+        BytesValue.fromUTF8(tokenId.trim()),
+        new BigUIntValue(valueUnstake * 1000000000000000000),
+        BytesValue.fromUTF8("unstake")
+      ])
+      .build();
+
+    triggerTx({
+      address: smartContractAddress,
+      gasLimit: 5000000,
+      value: 0,
+      data,
+    });
+  }, [valueUnstake, tokenId, triggerTx]);
 
   return (
     <MainLayout>
@@ -57,73 +117,80 @@ const Staking: NextPage = () => {
             <Text textAlign="center" mt={5} fontWeight="bold" fontSize="xl" textColor="elvenTools.white">
               Staking now
             </Text>
-          <FormControl isRequired>
+            <FormControl>
               <FormLabel textColor="elvenTools.white" fontSize="sm">
-              Spritz amount:
-                </FormLabel>
+                Spritz amount:
+              </FormLabel>
               <Stack shouldWrapChildren direction='row'>
-            <NumberInput
-              onChange={(valueString) => setValueStake(Number(valueString))}
-              value={Number(valueStake)}
-              max={10000}
-              min={0}
-              size="md"
-              textColor="elvenTools.white"
-            >
-              <NumberInputField textColor="elvenTools.white" />
-              <NumberInputStepper>
-                <NumberIncrementStepper textColor="elvenTools.white" />
-                <NumberDecrementStepper textColor="elvenTools.white" />
-              </NumberInputStepper>
-            </NumberInput>
-            <Button borderColor="elvenTools.color2.darker" borderWidth={2}
-              bgColor="transparent" rounded="xl"
-              fontWeight="normal"
-              cursor="pointer"
-              color="elvenTools.white"
-              userSelect="none"
-              _hover={{ bg: 'elvenTools.color2.darker' }}
-              transition="background-color .3s" width="100px">
-              Stake
-            </Button>
-            </Stack>
-          </FormControl>
-            <FormControl isRequired>
-              <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
-              Spritz amount:
-                </FormLabel>
-            <Stack shouldWrapChildren direction='row'>
-            <NumberInput
-              onChange={(valueString) => setValueUnstake(Number(valueString))}
-              value={Number(valueUnstake)}
-              max={10000}
-              min={0}
-              size="md"
-              textColor="elvenTools.white"
+                <NumberInput
+                  onChange={(valueString) => setValueStake(Number(valueString))}
+                  value={Number(valueStake)}
+                  max={10000}
+                  min={0}
+                  size="md"
+                  textColor="elvenTools.white"
                 >
-              <NumberInputField textColor="elvenTools.white" />
-              <NumberInputStepper>
-                <NumberIncrementStepper textColor="elvenTools.white" />
-                <NumberDecrementStepper textColor="elvenTools.white" />
-              </NumberInputStepper>
-            </NumberInput>
-            <Button borderColor="elvenTools.color2.darker" borderWidth={2}
-              bgColor="transparent" rounded="xl"
-              fontWeight="normal"
-              cursor="pointer"
-              color="elvenTools.white"
-              userSelect="none"
-              _hover={{ bg: 'elvenTools.color2.darker' }}
-              transition="background-color .3s" width="100px">
-              Unstake
-            </Button>
+                  <NumberInputField textColor="elvenTools.white" />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper textColor="elvenTools.white" />
+                    <NumberDecrementStepper textColor="elvenTools.white" />
+                  </NumberInputStepper>
+                </NumberInput>
+                <ActionButton borderColor="elvenTools.color2.darker" borderWidth={2}
+                  bgColor="transparent" rounded="xl"
+                  fontWeight="normal"
+                  cursor="pointer"
+                  color="elvenTools.white"
+                  _hover={{ bg: 'elvenTools.color2.darker' }}
+                  transition="background-color .3s" width="100px"
+                  onClick={stakeTransaction}
+                  disabled={pending}
+                >
+                  Stake
+                </ActionButton>
               </Stack>
               <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
-                { num }
+                Avail SPRITZ Balance: {Number(dataESDT?.balance) / 1000000000000000000}
+              </FormLabel>
+            </FormControl>
+            <FormControl>
+              <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
+                Spritz amount: 
+              </FormLabel>
+              <Stack shouldWrapChildren direction='row'>
+                <NumberInput
+                  onChange={(valueString) => setValueUnstake(Number(valueString))}
+                  value={Number(valueUnstake)}
+                  max={10000}
+                  min={0}
+                  size="md"
+                  textColor="elvenTools.white"
+                >
+                  <NumberInputField textColor="elvenTools.white" />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper textColor="elvenTools.white" />
+                    <NumberDecrementStepper textColor="elvenTools.white" />
+                  </NumberInputStepper>
+                </NumberInput>
+                <ActionButton borderColor="elvenTools.color2.darker" borderWidth={2}
+                  bgColor="transparent" rounded="xl"
+                  fontWeight="normal"
+                  cursor="pointer"
+                  color="elvenTools.white"
+                  _hover={{ bg: 'elvenTools.color2.darker' }}
+                  transition="background-color .3s" width="100px"
+                  onClick={unstakeTransaction}
+                  disabled={pending}
+                >
+                  Unstake
+                </ActionButton>
+              </Stack>
+              <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
+                Avail SPRITZ Balance: {realStakingPosition}
               </FormLabel>
             </FormControl>
           </SimpleGrid>
-          </Box>
+        </Box>
       </Box>
     </MainLayout>
   );

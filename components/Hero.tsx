@@ -1,24 +1,24 @@
 import { Box, Text } from '@chakra-ui/react';
-import { CollectionInfoBox } from './CollectionInfoBox';
-import { shortenHash } from '../utils/shortenHash';
+//import { CollectionInfoBox } from './CollectionInfoBox';
+//import { shortenHash } from '../utils/shortenHash';
 import { useElvenScQuery } from '../hooks/useElvenScQuery';
-import { SCQueryType, useConfig } from '@useelven/core';
+import { SCQueryType } from '@useelven/core';
 
-const smartContractAddress = process.env.NEXT_PUBLIC_NFT_SMART_CONTRACT;
+//const smartContractAddress = process.env.NEXT_PUBLIC_NFT_SMART_CONTRACT;
 
 export const Hero = () => {
-  const { explorerAddress } = useConfig();
-  const { data: collectionSize, isLoading: collectionSizeLoading } =
+  //const { explorerAddress } = useConfig();
+  const { data: collectionSize, /*isLoading: collectionSizeLoading*/ } =
     useElvenScQuery<number>({
       funcName: 'getApy',
       type: SCQueryType.NUMBER,
     });
 
-  const { data: collectionTicker, isLoading: collectionTickerLoading } =
+  /*const { data: collectionTicker, isLoading: collectionTickerLoading } =
     useElvenScQuery<number>({
       funcName: 'getTokensID',
       type: SCQueryType.STRING,
-    });
+    });*/
 
 
   return (
@@ -65,7 +65,7 @@ export const Hero = () => {
           },
         }}
       >
-        <CollectionInfoBox
+{/*        <CollectionInfoBox
           content={collectionTicker || '-'}
           label="Collection ticker. Click for details."
           isLoading={collectionTickerLoading}
@@ -88,7 +88,7 @@ export const Hero = () => {
           content={`${collectionSize/100 || 0}%`}
           isLoading={collectionSizeLoading}
           label="APY"
-        />
+        />*/}
       </Box>
     </Box>
   );
