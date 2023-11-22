@@ -75,11 +75,9 @@ const Staking: NextPage = () => {
   const unstakeTransaction = useCallback(() => {
     // Prepare data payload for smart contract using MultiversX JS SDK core tools
     const data = new ContractCallPayloadBuilder()
-      .setFunction(new ContractFunction('ESDTTransfer'))
+      .setFunction(new ContractFunction('unstake'))
       .setArgs([
-        BytesValue.fromUTF8(tokenId.trim()),
         new BigUIntValue(valueUnstake * 1000000000000000000),
-        BytesValue.fromUTF8("unstake")
       ])
       .build();
 
