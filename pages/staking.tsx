@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { Box, FormLabel, NumberInputField, NumberInput, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, FormControl, Stack, SimpleGrid, Button, Text } from '@chakra-ui/react';
+import { Box, FormLabel, NumberInputField, NumberInput, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, FormControl, Stack, SimpleGrid, Text } from '@chakra-ui/react';
 import { MainLayout } from '../components/MainLayout';
 import { HeaderMenu } from '../components/HeaderMenu';
 import { HeaderMenuButtons } from '../components/HeaderMenuButtons';
