@@ -140,7 +140,7 @@ const Staking: NextPage = () => {
                   cursor="pointer"
                   color="elvenTools.white"
                   _hover={{ bg: 'elvenTools.color2.darker' }}
-                  transition="background-color .3s" width="100px"
+                  transition="background-color .3s" width="110px"
                   onClick={stakeTransaction}
                   disabled={pending}
                 >
@@ -176,10 +176,9 @@ const Staking: NextPage = () => {
                   cursor="pointer"
                   color="elvenTools.white"
                   _hover={{ bg: 'elvenTools.color2.darker' }}
-                  transition="background-color .3s" width="100px"
+                  transition="background-color .3s" width="110px"
                   onClick={unstakeTransaction}
-                  disabled={pending}
-                >
+                  disabled={pending}>
                   Unstake
                 </ActionButton>
               </Stack>
