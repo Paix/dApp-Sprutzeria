@@ -8,12 +8,15 @@ import { HeroImage } from '../components/HeroImage';
 import { Faq } from '../components/Faq';
 import { Roadmap } from '../components/Roadmap';
 import { Team } from '../components/Team';
+import { useLogin } from '@useelven/core';
 
 const Home: NextPage = () => {
+  const { isLoggedIn } = useLogin();
+  const buttonsEnabled = isLoggedIn ? ['auth', 'staking', 'about'] : ['auth', 'about']
   return (
     <MainLayout>
       <HeaderMenu>
-        <HeaderMenuButtons enabled={['auth', 'staking', 'about']} />
+        <HeaderMenuButtons enabled={buttonsEnabled} />
       </HeaderMenu>
       <Box
         display="flex"

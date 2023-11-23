@@ -1,17 +1,17 @@
 import type { NextPage } from 'next';
-import { Box, FormLabel, NumberInputField, NumberInput, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, FormControl, Stack, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, FormLabel, NumberInputField, NumberInput, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, FormControl, Stack, SimpleGrid, Text, Spinner, Button } from '@chakra-ui/react';
 import { MainLayout } from '../components/MainLayout';
 import { HeaderMenu } from '../components/HeaderMenu';
 import { HeaderMenuButtons } from '../components/HeaderMenuButtons';
 import { useState, useCallback } from 'react';
 import {
-  SCQueryType, useAccount, useApiCall, useTransaction
+  SCQueryType, useAccount, useApiCall, useConfig, useTransaction
 } from '@useelven/core';
 import { useElvenScQuery } from '../hooks/useElvenScQuery';
-import { Address, BigUIntValue, ContractCallPayloadBuilder, ContractFunction, BytesValue } from "@multiversx/sdk-core";
+import { Address, BigUIntValue, BytesValue, ContractCallPayloadBuilder, ContractFunction } from "@multiversx/sdk-core";
 import { Token } from "../types/account";
 import abiJSON from "../staking-contract.abi.json";
-import { ActionButton } from '../components/ActionButton';
+import { shortenHash } from '../utils/shortenHash';
 
 const smartContractAddress = process.env.NEXT_PUBLIC_NFT_SMART_CONTRACT ? process.env.NEXT_PUBLIC_NFT_SMART_CONTRACT : "";
 
@@ -19,6 +19,8 @@ const Staking: NextPage = () => {
 
   const { address } = useAccount();
   const hexAdress = new Address(address);
+  const { explorerAddress } = useConfig();
+
   const { data: stakedAddresses } =
     useElvenScQuery<string>({
       type: SCQueryType.STRING,
@@ -33,6 +35,7 @@ const Staking: NextPage = () => {
       funcName: 'getStakingPosition',
       args: [hexAdress.hex()],
       abiJSON: abiJSON,
+      autoInit: Boolean(hexAdress)
     });
 
   const { data: tokenId } =
@@ -51,8 +54,8 @@ const Staking: NextPage = () => {
   const [valueStake, setValueStake] = useState(0);
   const [valueUnstake, setValueUnstake] = useState(0);
 
-  const { pending, triggerTx } = useTransaction();
-
+  const { pending, triggerTx, transaction } = useTransaction();
+  
   const stakeTransaction = useCallback(() => {
     // Prepare data payload for smart contract using MultiversX JS SDK core tools
     const data = new ContractCallPayloadBuilder()
@@ -80,7 +83,7 @@ const Staking: NextPage = () => {
         new BigUIntValue(valueUnstake * 1000000000000000000),
       ])
       .build();
-
+      
     triggerTx({
       address: smartContractAddress,
       gasLimit: 5000000,
@@ -134,23 +137,41 @@ const Staking: NextPage = () => {
                     <NumberDecrementStepper textColor="elvenTools.white" />
                   </NumberInputStepper>
                 </NumberInput>
-                <ActionButton borderColor="elvenTools.color2.darker" borderWidth={2}
+                <Button borderColor="elvenTools.color2.darker" borderWidth={2}
                   bgColor="transparent" rounded="xl"
                   fontWeight="normal"
                   cursor="pointer"
                   color="elvenTools.white"
                   _hover={{ bg: 'elvenTools.color2.darker' }}
-                  transition="background-color .3s" width="110px"
+                  transition="background-color .3s" width="100px"
                   onClick={stakeTransaction}
                   disabled={pending}
                 >
                   Stake
-                </ActionButton>
+                </Button>
               </Stack>
               <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
                 Avail SPRITZ Balance: {Number(dataESDT?.balance) / 1000000000000000000}
               </FormLabel>
             </FormControl>
+            {pending && <Spinner ml={5} />}
+            {transaction && process.env.NEXT_PUBLIC_MULTIVERSX_CHAIN ? (
+              <Stack direction="row" ml={5}>
+                <Text color="elvenTools.white">Transaction details: </Text>
+                <Text
+                  textDecoration="underline"
+                  color="elvenTools.white"
+                  as="a"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  href={`${explorerAddress}/transactions/${transaction
+                    .getHash()
+                    .toString()}`}
+                >
+                  {shortenHash(transaction.getHash().toString())}
+                </Text>
+              </Stack>
+            ) : null}
             <FormControl>
               <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
                 Spritz amount: 
@@ -170,17 +191,17 @@ const Staking: NextPage = () => {
                     <NumberDecrementStepper textColor="elvenTools.white" />
                   </NumberInputStepper>
                 </NumberInput>
-                <ActionButton borderColor="elvenTools.color2.darker" borderWidth={2}
+                <Button borderColor="elvenTools.color2.darker" borderWidth={2}
                   bgColor="transparent" rounded="xl"
                   fontWeight="normal"
                   cursor="pointer"
                   color="elvenTools.white"
                   _hover={{ bg: 'elvenTools.color2.darker' }}
-                  transition="background-color .3s" width="110px"
+                  transition="background-color .3s" width="100px"
                   onClick={unstakeTransaction}
                   disabled={pending}>
                   Unstake
-                </ActionButton>
+                </Button>
               </Stack>
               <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
                 Avail SPRITZ Balance: {realStakingPosition}
