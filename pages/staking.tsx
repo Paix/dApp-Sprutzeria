@@ -38,6 +38,15 @@ const Staking: NextPage = () => {
       autoInit: Boolean(hexAdress)
     });
 
+  const { data: rewardsPosition = 0 } =
+    useElvenScQuery<number>({
+      type: SCQueryType.NUMBER,
+      funcName: 'calculateRewardsForUser',
+      args: [hexAdress.hex(), "31"],
+      abiJSON: abiJSON,
+      autoInit: Boolean(hexAdress)
+    });
+
   const { data: tokenId } =
     useElvenScQuery<string>({
       funcName: 'getTokensID',
@@ -50,6 +59,7 @@ const Staking: NextPage = () => {
   });
 
   const realStakingPosition = stakingPosition / 1000000000000000000;
+  const realRewardsPosition = rewardsPosition / 1000000000000000000;
 
   const [valueStake, setValueStake] = useState(0);
   const [valueUnstake, setValueUnstake] = useState(0);
@@ -63,7 +73,8 @@ const Staking: NextPage = () => {
       .setArgs([
         BytesValue.fromUTF8(tokenId.trim()),
         new BigUIntValue(valueStake * 1000000000000000000),
-        BytesValue.fromUTF8("stake")
+        BytesValue.fromUTF8("stake"),
+        new BigUIntValue(1)
       ])
       .build();
 
@@ -80,6 +91,7 @@ const Staking: NextPage = () => {
     const data = new ContractCallPayloadBuilder()
       .setFunction(new ContractFunction('unstake'))
       .setArgs([
+        new BigUIntValue(1),
         new BigUIntValue(valueUnstake * 1000000000000000000),
       ])
       .build();
@@ -112,7 +124,7 @@ const Staking: NextPage = () => {
           display="flex"
           bgGradient="linear-gradient(90deg, elvenTools.dark.base 0%, elvenTools.dark.darker 70%);"
           width="480px"
-          height="320px"
+          height="330px"
         >
           <SimpleGrid columns={1}>
             <Text textAlign="center" mt={5} fontWeight="bold" fontSize="xl" textColor="elvenTools.white">
@@ -126,7 +138,7 @@ const Staking: NextPage = () => {
                 <NumberInput
                   onChange={(valueString) => setValueStake(Number(valueString))}
                   value={Number(valueStake)}
-                  max={10000}
+                  max={Number(dataESDT?.balance) / 1000000000000000000}
                   min={0}
                   size="md"
                   textColor="elvenTools.white"
@@ -151,7 +163,7 @@ const Staking: NextPage = () => {
                 </Button>
               </Stack>
               <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
-                Avail SPRITZ Balance: {Number(dataESDT?.balance) / 1000000000000000000}
+                Avail SPRITZ Balance: {(Number(dataESDT?.balance) / 1000000000000000000).toFixed(0)}
               </FormLabel>
             </FormControl>
             {pending && <Spinner ml={5} />}
@@ -180,7 +192,7 @@ const Staking: NextPage = () => {
                 <NumberInput
                   onChange={(valueString) => setValueUnstake(Number(valueString))}
                   value={Number(valueUnstake)}
-                  max={10000}
+                  max={stakingPosition / 1000000000000000000}
                   min={0}
                   size="md"
                   textColor="elvenTools.white"
@@ -204,7 +216,10 @@ const Staking: NextPage = () => {
                 </Button>
               </Stack>
               <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
-                Avail SPRITZ Balance: {realStakingPosition}
+                Avail SPRITZ Balance: {realStakingPosition.toFixed(0)}
+              </FormLabel>
+              <FormLabel textColor="elvenTools.white" fontSize="sm" alignContent="center">
+                Rewards: {realRewardsPosition.toFixed(4)} + 💦
               </FormLabel>
             </FormControl>
           </SimpleGrid>
